@@ -68,3 +68,26 @@
   width: 100px;
   height: 100px;
 }
+
+.countdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdownCircle {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  width: 50vh;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rem;
+}

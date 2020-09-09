@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { AnimateSharedLayout, motion } from "framer-motion";
@@ -28,21 +28,32 @@ function User({ user }) {
     </motion.div>
   );
 }
-export default function Home() {
-  const [players, setPlayers] = useState(users);
+function Winner({ winner }) {
+  return <motion.div layoutId={winner.name}>{winner.name}</motion.div>;
+}
 
+export default function Home() {
+  const [countdown, setCountdown] = useState(null);
+  const [players, setPlayers] = useState(users);
   const [winners, setWinners] = useState([]);
+
+  useEffect(() => {
+    if (countdown > 0) {
+      setTimeout(() => setCountdown(countdown - 1), 1000);
+    } else if (countdown === 0) {
+      console.log("winner");
+      const winnerIndex = Math.floor(Math.random() * players.length);
+      setWinners([...winners, players[winnerIndex]]);
+      setPlayers([
+        ...players.slice(0, winnerIndex),
+        ...players.slice(winnerIndex + 1),
+      ]);
+    }
+  }, [countdown]);
 
   function chooseWinner() {
     if (!players.length) return;
-
-    const winnerIndex = Math.floor(Math.random() * players.length);
-    setPlayers([
-      ...players.slice(0, winnerIndex),
-      ...players.slice(winnerIndex + 1),
-    ]);
-
-    setWinners([...winners, players[winnerIndex]]);
+    setCountdown(3);
   }
 
   return (
@@ -68,28 +79,20 @@ export default function Home() {
         <div className={styles.main}>
           <div className={styles.podiumContainer}>
             <div className={styles.secondPlace}>
-              {winners[1] && (
-                <motion.div layoutId={winners[1].name}>
-                  {winners[1].name}
-                </motion.div>
-              )}
+              {winners[1] && <Winner winner={winners[1]} />}
             </div>
-
             <div className={styles.firstPlace}>
-              {winners[2] && (
-                <motion.div layoutId={winners[2].name}>
-                  {winners[2].name}
-                </motion.div>
-              )}
+              {winners[2] && <Winner winner={winners[2]} />}
             </div>
             <div className={styles.thirdPlace}>
-              {winners[0] && (
-                <motion.div layoutId={winners[0].name}>
-                  {winners[0].name}
-                </motion.div>
-              )}
+              {winners[0] && <Winner winner={winners[0]} />}
             </div>
           </div>
+          {countdown > 0 && (
+            <div className={styles.countdown}>
+              <div className={styles.countdownCircle}>{countdown}</div>
+            </div>
+          )}
         </div>
       </AnimateSharedLayout>
     </div>
