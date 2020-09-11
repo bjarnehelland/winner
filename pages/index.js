@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { AnimateSharedLayout, motion } from "framer-motion";
+import Podeums from "../components/Podeum";
 
 const users = [
   { name: "Bjarne Helland", email: "bh@profitbase.no" },
@@ -77,17 +78,8 @@ export default function Home() {
           </ul>
         </div>
         <div className={styles.main}>
-          <div className={styles.podiumContainer}>
-            <div className={styles.secondPlace}>
-              {winners[1] && <Winner winner={winners[1]} />}
-            </div>
-            <div className={styles.firstPlace}>
-              {winners[2] && <Winner winner={winners[2]} />}
-            </div>
-            <div className={styles.thirdPlace}>
-              {winners[0] && <Winner winner={winners[0]} />}
-            </div>
-          </div>
+          <Podeums winners={winners} numberOfWinners={3} />
+
           {countdown > 0 && (
             <div className={styles.countdown}>
               <div className={styles.countdownCircle}>{countdown}</div>

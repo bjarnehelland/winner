@@ -47,28 +47,6 @@
   font-size: 2rem;
 }
 
-.podiumContainer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-evenly;
-  flex: 1 1 auto;
-}
-.firstPlace {
-  background: #66c6b9;
-  width: 100px;
-  height: 200px;
-}
-.secondPlace {
-  background: #ffd25c;
-  width: 100px;
-  height: 150px;
-}
-.thirdPlace {
-  background: #f37159;
-  width: 100px;
-  height: 100px;
-}
-
 .countdown {
   position: absolute;
   top: 0;
@@ -90,4 +68,5 @@
   justify-content: center;
   align-items: center;
   font-size: 40rem;
+  z-index: 10;
 }

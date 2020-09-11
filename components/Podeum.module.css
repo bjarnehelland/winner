@@ -1,0 +1,41 @@
+.podiums {
+  display: grid;
+  grid-gap: 10px;
+
+  width: 800px;
+  height: 400px;
+}
+.place {
+  display: grid;
+  align-items: flex-end;
+}
+
+.podeum {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+.platform {
+  background: #ffd25c;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shadow {
+  background: rgb(0 0 0 / 8%);
+  height: 10%;
+  min-height: 10px;
+}
+
+.base {
+  background: #ffd25c;
+  flex: 1 1 auto;
+  margin: 0 20px;
+  text-align: center;
+  font-size: 8rem;
+  color: white;
+}
