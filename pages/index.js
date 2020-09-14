@@ -82,7 +82,18 @@ export default function Home() {
 
           {countdown > 0 && (
             <div className={styles.countdown}>
-              <div className={styles.countdownCircle}>{countdown}</div>
+              <motion.div
+                className={styles.countdownCircle}
+                animate={{ scale: [0, 1, 0] }}
+                transition={{
+                  duration: 1,
+                  ease: "easeInOut",
+                  times: [0, 0.5, 1],
+                  loop: Infinity,
+                }}
+              >
+                <div>{countdown}</div>
+              </motion.div>
             </div>
           )}
         </div>

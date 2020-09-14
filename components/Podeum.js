@@ -3,13 +3,24 @@ import { motion } from "framer-motion";
 
 function Podeum({ color, height, winner }) {
   return (
-    <div className={styles.podeum} style={{ height }}>
-      <div className={styles.platform} style={{ background: color }}>
-        <motion.div layoutId={winner.name}>{winner.name}</motion.div>
-      </div>
-      <div className={styles.base} style={{ background: color }}>
-        <div className={styles.shadow}></div>
-        {winner.position}
+    <div>
+      {winner.name && (
+        <motion.img
+          layoutId={winner.name}
+          src="/happy.svg"
+          alt="Winner"
+          className={styles.winnerImg}
+        />
+      )}
+
+      <div className={styles.podeum} style={{ height }}>
+        <div className={styles.platform} style={{ background: color }}>
+          <div>{winner.name}</div>
+        </div>
+        <div className={styles.base} style={{ background: color }}>
+          <div className={styles.shadow}></div>
+          {winner.position}
+        </div>
       </div>
     </div>
   );

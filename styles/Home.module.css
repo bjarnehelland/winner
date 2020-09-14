@@ -62,11 +62,12 @@
   background: red;
   color: white;
   border-radius: 50%;
-  width: 50vh;
-  height: 50vh;
+  width: calc(min(100vh, 100vw) - 100px);
+  height: calc(min(100vh, 100vw) - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40rem;
+  font-size: clamp(1.5rem, 50vw, 60rem);
+  font-family: "Roboto Mono", monospace;
   z-index: 10;
 }
